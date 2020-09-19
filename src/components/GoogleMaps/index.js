@@ -1,45 +1,85 @@
-import React, { useEffect, useState } from 'react';
-import { View, StyleSheet } from 'react-native';
+import React, {useState, useEffect} from 'react';
+import {View, Text, StyleSheet} from 'react-native';
 
-import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
+import NearstCoffees from '../NearstCoffees';
+import EstablishmentsService from '../../services/Google/establishments.js';
+
+
+import MapView, {Marker} from 'react-native-maps';
 
 const GoogleMaps = () => {
-    const [latitude, setLatitude] = useState(0);
+  const [latitude, setLatitude] = useState(0);
     const [longitude, setLongitude] = useState(0);
-
-    useEffect(() => {
-        navigator.geolocation.getCurrentPosition((position) => {
-          setLatitude(position.coords.latitude);
-          setLongitude(position.coords.longitude);
-        });
+    const [locations, setLocations] = useState([]);
+    const [position, setPosition] = useState({
+        latitude: 0,
+        longitude: 0,
+        latitudeDelta: 0.025,
+        longitudeDelta: 0.0121,
     });
 
-    return (
-        <View style={{flex:1}}>
-            <MapView
-                provider={PROVIDER_GOOGLE}
-                loadingEnabled={true}
-                style={styles.container}
-                region={{
-                    latitude: latitude,
-                    longitude: longitude,
-                    latitudeDelta: 0.025,
-                    longitudeDelta: 0.0121,
-                }}
-            >
-            </MapView>
-        </View>
-    )
-}
+    useEffect(() => {
+        setCurrentLocation();
+        loadCoffeShops();
+    }, []);
+
+    async function setCurrentLocation() {
+        await navigator.geolocation.getCurrentPosition(function(position) {
+            setLatitude(position.coords.latitude);
+            setLongitude(position.coords.longitude);
+        });
+    }
+
+    // Load all coffee shops
+    async function loadCoffeShops() {
+        const response = await EstablishmentsService.index(latitude, longitude);
+        setLocations(response.data.results);
+    }
+
+  return (
+    <View style={styles.container}>
+      <NearstCoffees />
+
+      <MapView
+        style={styles.map}
+        region={
+            {
+                latitude: (latitude) ? latitude : 0,
+                longitude: (longitude) ? longitude : 0,
+                latitudeDelta: 0.035,
+                longitudeDelta: 0.0121,
+            }
+        }>
+          
+            {
+                locations.map(item => {
+                    return (
+                        <Marker key={item.name} 
+                            coordinate={
+                                {
+                                    latitude: item.geometry.location.lat, 
+                                    longitude: item.geometry.location.lng
+                                }
+                            }
+                            title={item.name}
+                        />
+                    )
+                })
+            }
+      </MapView>
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
-    container: {
-        position: 'absolute', 
-        top: 0, 
-        bottom: 0, 
-        left: 0, 
-        right: 0
-    }
+  container: {
+    flex: 1,
+    zIndex: 5,
+  },
+  map: {
+    height: '100%',
+    width: '100%',
+  },
 });
 
 export default GoogleMaps;
