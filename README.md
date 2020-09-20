@@ -43,13 +43,11 @@ Find My Coffee Mobile é o mobile de um aplicativo FullStack. Ele te possibilita
 ### Página Inicial
 <img src="https://github.com/OneBitCodeBlog/find-my-coffee-mobile-development/blob/master/src/assets/readme/home_page.jpeg" width="200">
 
-### Você pode verificar os dados de uma cafeteria.
+
 <img src="https://github.com/OneBitCodeBlog/find-my-coffee-mobile-development/blob/master/src/assets/readme/establishment_1.jpeg" width="200">
-
-
 <img src="https://github.com/OneBitCodeBlog/find-my-coffee-mobile-development/blob/master/src/assets/readme/establishment_2.jpeg" width="200">
 
-### Ou até verificar os cafés mais próximos.
+
 <img src="https://github.com/OneBitCodeBlog/find-my-coffee-mobile-development/blob/master/src/assets/readme/nearst_coffees.jpeg" width="200">
 
 
