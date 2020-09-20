@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, Image } from 'react-native';
 
+import ListStars from '../../ListStars';
+
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 
@@ -35,23 +37,7 @@ const ListCoffees = (props) => {
                             </Text>
 
                             <View style={{flexDirection: 'row'}}>
-                                <View style={{flexDirection: 'row'}}>
-                                    {
-                                        [...Array(store.ratings_count)].map((key, index) => {
-                                            return (
-                                                <FontAwesomeIcon icon={faStar} color="yellow" key={index} />
-                                            )
-                                        })
-                                    }
-
-                                    {
-                                        [...Array(5 - store.ratings_count)].map((key, index) => {
-                                            return (
-                                                <FontAwesomeIcon icon={faStar} color="gray" key={index} />
-                                            )
-                                        })
-                                    }
-                                </View>
+                                <ListStars count={store.ratings_count} average={store.ratings_count} />
 
                                 <Text style={{color: 'white', marginLeft: 10, fontSize: 10}}>
                                     { store.ratings_count } Opiniões

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { StyleSheet, View, Text, Image, ScrollView, Button } from 'react-native';
 
+import ListRatings from './ListRatings';
 import EstablishmentPhotoService from '../../services/Google/establishment.js';
 
 import ProfilePhoto from '../../assets/cafe_excesso.jpg';
@@ -77,6 +78,7 @@ const Establishment = (props) => {
 
                     <Separator />
 
+                    <ListRatings establishment={props.establishment} />
                 </View>
             }
         </ScrollView>
@@ -89,7 +91,7 @@ const styles = StyleSheet.create({
         top: 40,
         zIndex: 10,
         flex: 1,
-        height: 710,
+        height: 500,
     },
     background: {
         backgroundColor: 'black',
@@ -97,7 +99,8 @@ const styles = StyleSheet.create({
         borderRadius: 20,
         paddingLeft: 20,
         paddingRight: 20,
-        marginHorizontal:30,
+        paddingBottom: 20,
+        marginHorizontal: 30,
     },
     photo: {
         height: 200,
