@@ -3,9 +3,6 @@ import { View, Text, StyleSheet, ScrollView, Image } from 'react-native';
 
 import ListStars from '../../ListStars';
 
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { faStar } from '@fortawesome/free-solid-svg-icons';
-
 import ListEstablishmentsService from '../../../services/Local/store.js';
 
 const Separator = () => (
