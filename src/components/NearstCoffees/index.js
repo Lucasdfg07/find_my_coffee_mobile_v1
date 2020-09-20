@@ -1,19 +1,41 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Text, View, StyleSheet, TouchableOpacity, Alert } from 'react-native';
 
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faHeart, faAngleDown } from '@fortawesome/free-solid-svg-icons';
 
+import ListCoffees from './ListCoffees';
 
-const NearstCoffees = () => {
-    
+const Separator = () => (
+    <View style={styles.separator} />
+);
+
+
+const NearstCoffees = (props) => {
+    const [showDropdownButton, setShowDropdownButton] = useState(false);
+
     return (
         <View style={styles.container}>
-            <TouchableOpacity style={styles.button} onPress={() => Alert.alert('Simple Button pressed')}>
+            <TouchableOpacity style={styles.button} 
+                              onPress={() => (showDropdownButton == false) ? 
+                                              setShowDropdownButton(true) : 
+                                              setShowDropdownButton(false)}>
+                                                  
                     <Text style={styles.text}>Find my Coffee</Text>
                     <FontAwesomeIcon icon={faHeart} color='white' style={{marginRight: 5}} />
                     <FontAwesomeIcon icon={faAngleDown} color='white' /> 
             </TouchableOpacity>
+
+            {
+                showDropdownButton == true &&
+                <View style={styles.nearstCoffees}>
+                    <Text style={styles.title}>Cafés mais amados próximos a você</Text>
+
+                    <Separator />
+
+                    <ListCoffees latitude={props.latitude} longitude={props.longitude} />
+                </View>
+            }
         </View>
     )
 }
@@ -43,7 +65,23 @@ const styles = StyleSheet.create({
         color: 'white',
         fontWeight: 'bold',
         marginRight: 20,
-    }
+    },
+    nearstCoffees: {
+        backgroundColor: 'black',
+        width: 190,
+        marginTop: 5,
+        borderRadius: 5,
+        padding: 10,
+    },
+    title: {
+        color: '#F56D50',
+        fontWeight: 'bold',
+    },
+    separator: {
+        marginVertical: 8,
+        borderBottomColor: 'white',
+        borderBottomWidth: StyleSheet.hairlineWidth,
+    },
 });
 
 export default NearstCoffees;

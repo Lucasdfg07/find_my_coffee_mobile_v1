@@ -11,12 +11,7 @@ const GoogleMaps = () => {
   const [latitude, setLatitude] = useState(0);
     const [longitude, setLongitude] = useState(0);
     const [locations, setLocations] = useState([]);
-    const [position, setPosition] = useState({
-        latitude: 0,
-        longitude: 0,
-        latitudeDelta: 0.025,
-        longitudeDelta: 0.0121,
-    });
+    const [selected, setSelected] = useState({});
 
     useEffect(() => {
         setCurrentLocation();
@@ -38,7 +33,7 @@ const GoogleMaps = () => {
 
   return (
     <View style={styles.container}>
-      <NearstCoffees />
+      <NearstCoffees latitude={latitude} longitude={longitude} />
 
       <MapView
         style={styles.map}
@@ -62,6 +57,7 @@ const GoogleMaps = () => {
                                 }
                             }
                             title={item.name}
+                            onPress={() => setSelected(item)}
                         />
                     )
                 })
