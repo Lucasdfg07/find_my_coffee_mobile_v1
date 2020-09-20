@@ -1,11 +1,12 @@
 import React, {useState, useEffect} from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import { View, Text, StyleSheet, TouchableWithoutFeedback } from 'react-native';
 
 import NearstCoffees from '../NearstCoffees';
 import EstablishmentsService from '../../services/Google/establishments.js';
 
 
-import MapView, {Marker} from 'react-native-maps';
+import MapView, { Marker } from 'react-native-maps';
+import Establishment from '../Establishment';
 
 const GoogleMaps = () => {
     const [latitude, setLatitude] = useState(0);
@@ -34,6 +35,8 @@ const GoogleMaps = () => {
   return (
     <View style={styles.container}>
       <NearstCoffees latitude={latitude} longitude={longitude} />
+      
+      <Establishment establishment={selected} />
 
       <MapView
         style={styles.map}
@@ -49,16 +52,16 @@ const GoogleMaps = () => {
             {
                 locations.map(item => {
                     return (
-                        <Marker key={item.name} 
-                            coordinate={
-                                {
-                                    latitude: item.geometry.location.lat, 
-                                    longitude: item.geometry.location.lng
-                                }
+                      <Marker key={item.place_id}
+                        coordinate={
+                            {
+                                latitude: item.geometry.location.lat, 
+                                longitude: item.geometry.location.lng
                             }
-                            title={item.name}
-                            onClick={() => setSelected(item)}
-                        />
+                        }
+                        title={item.name}
+                        onPress={() => setSelected(item)}
+                      />
                     )
                 })
             }

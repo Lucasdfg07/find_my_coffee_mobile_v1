@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, Image } from 'react-native';
 
-import ListEstablishmentsService from '../../../services/Local/store.js';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
 
-import StarYellow from '../../../assets/star_yellow.png';
-import StarGray from '../../../assets/star.png';
+import ListEstablishmentsService from '../../../services/Local/store.js';
 
 const Separator = () => (
     <View style={styles.separator} />
@@ -27,7 +27,7 @@ const ListCoffees = (props) => {
             {
                 stores.map(store => {
                     return (
-                        <View style={{flex: 1}} key={store.name} className="list_establishment">
+                        <View style={{flex: 1}} key={store.name}>
                             <Text style={styles.store_name}>{store.name}</Text>
 
                             <Text style={styles.store_address}>
@@ -39,7 +39,7 @@ const ListCoffees = (props) => {
                                     {
                                         [...Array(store.ratings_count)].map((key, index) => {
                                             return (
-                                                <Image source={StarYellow} style={styles.image} key={index} alt="star yellow" />
+                                                <FontAwesomeIcon icon={faStar} color="yellow" key={index} />
                                             )
                                         })
                                     }
@@ -47,7 +47,7 @@ const ListCoffees = (props) => {
                                     {
                                         [...Array(5 - store.ratings_count)].map((key, index) => {
                                             return (
-                                                <Image source={StarGray} style={styles.image} key={index} alt="star gray" />
+                                                <FontAwesomeIcon icon={faStar} color="gray" key={index} />
                                             )
                                         })
                                     }
@@ -84,10 +84,6 @@ const styles = StyleSheet.create({
         marginVertical: 8,
         borderBottomColor: 'white',
         borderBottomWidth: StyleSheet.hairlineWidth,
-    },
-    image: {
-        height: 10,
-        width: 10,
     },
 });
 
