@@ -8,7 +8,7 @@ import EstablishmentsService from '../../services/Google/establishments.js';
 import MapView, {Marker} from 'react-native-maps';
 
 const GoogleMaps = () => {
-  const [latitude, setLatitude] = useState(0);
+    const [latitude, setLatitude] = useState(0);
     const [longitude, setLongitude] = useState(0);
     const [locations, setLocations] = useState([]);
     const [selected, setSelected] = useState({});
@@ -38,12 +38,12 @@ const GoogleMaps = () => {
       <MapView
         style={styles.map}
         region={
-            {
-                latitude: (latitude) ? latitude : 0,
-                longitude: (longitude) ? longitude : 0,
-                latitudeDelta: 0.035,
-                longitudeDelta: 0.0121,
-            }
+          {
+            latitude: latitude,
+            longitude: longitude,
+            latitudeDelta: 0.035,
+            longitudeDelta: 0.0121,
+          }
         }>
           
             {
@@ -57,7 +57,7 @@ const GoogleMaps = () => {
                                 }
                             }
                             title={item.name}
-                            onPress={() => setSelected(item)}
+                            onClick={() => setSelected(item)}
                         />
                     )
                 })
