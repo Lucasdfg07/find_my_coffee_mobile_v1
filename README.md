@@ -41,16 +41,16 @@ Find My Coffee Mobile é o mobile de um aplicativo FullStack. Ele te possibilita
 ## Telas
 
 ### Página Inicial
-![Homepage image](https://github.com/OneBitCodeBlog/find-my-coffee-mobile-development/blob/master/src/assets/readme/home_page.jpeg)
+<img src="https://github.com/OneBitCodeBlog/find-my-coffee-mobile-development/blob/master/src/assets/readme/home_page.jpeg" width="200">
 
 ### Você pode verificar os dados de uma cafeteria.
-![Establishment image](https://github.com/OneBitCodeBlog/find-my-coffee-mobile-development/blob/master/src/assets/readme/establishment_1.jpeg)
+<img src="https://github.com/OneBitCodeBlog/find-my-coffee-mobile-development/blob/master/src/assets/readme/establishment_1.jpeg" width="200">
 
 
-![Establishment image](https://github.com/OneBitCodeBlog/find-my-coffee-mobile-development/blob/master/src/assets/readme/establishment_2.jpeg)
+<img src="https://github.com/OneBitCodeBlog/find-my-coffee-mobile-development/blob/master/src/assets/readme/establishment_2.jpeg" width="200">
 
 ### Ou até verificar os cafés mais próximos.
-![Nearst Coffees image](https://github.com/OneBitCodeBlog/find-my-coffee-mobile-development/blob/master/src/assets/readme/nearst_coffees.jpeg)
+<img src="https://github.com/OneBitCodeBlog/find-my-coffee-mobile-development/blob/master/src/assets/readme/nearst_coffees.jpeg" width="200">
 
 
 ## Features
