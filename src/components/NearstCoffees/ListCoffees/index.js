@@ -34,7 +34,7 @@ const ListCoffees = (props) => {
                             </Text>
 
                             <View style={{flexDirection: 'row'}}>
-                                <ListStars count={store.ratings_count} average={store.ratings_count} />
+                                <ListStars count={store.ratings_count} average={store.ratings_average} />
 
                                 <Text style={{color: 'white', marginLeft: 10, fontSize: 10}}>
                                     { store.ratings_count } Opiniões
