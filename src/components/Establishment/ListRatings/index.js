@@ -17,8 +17,13 @@ const ListRatings = (props) => {
     }, [props]);
 
     async function getEstablishmentRatings() {
-        const response = await ListRatingsService.show(props.establishment.place_id);
-        setRatings(response.data);
+        try {
+            const response = await ListRatingsService.show(props.establishment.place_id);
+            setRatings(response.data);
+        } catch (error) {
+            setRatings([]);
+            console.log(error);
+        }
     }
 
     return(

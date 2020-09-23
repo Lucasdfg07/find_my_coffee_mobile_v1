@@ -17,8 +17,13 @@ const ListCoffees = (props) => {
     }, []);
 
     async function loadNearstStores() {
-        const response = await ListEstablishmentsService.index(props.latitude, props.longitude);
-        setStores(response.data);
+        try {
+            const response = await ListEstablishmentsService.index(props.latitude, props.longitude);
+            setStores(response.data);
+        } catch (error) {
+            setStores([]);
+            console.log(error);
+        }
     }
 
     return(

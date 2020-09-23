@@ -24,8 +24,13 @@ const Establishment = (props) => {
     }, [props]);
 
     async function getEstablishmentInformations() {
-        const response = await EstablishmentPhotoService.index(props.establishment.place_id);
-        setEstablishment(response.data.result);
+        try {
+            const response = await EstablishmentPhotoService.index(props.establishment.place_id);
+            setEstablishment(response.data.result);
+        } catch (error) {
+            setEstablishment([]);
+            console.log(error);
+        }
     }
 
     return (

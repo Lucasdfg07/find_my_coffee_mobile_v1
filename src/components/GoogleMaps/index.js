@@ -28,8 +28,13 @@ const GoogleMaps = () => {
 
     // Load all coffee shops
     async function loadCoffeShops() {
-        const response = await EstablishmentsService.index(latitude, longitude);
-        setLocations(response.data.results);
+        try {
+            const response = await EstablishmentsService.index(latitude, longitude);
+            setLocations(response.data.results);
+        } catch (error) {
+            setLocations([]);
+            console.log(error);
+        }
     }
 
   return (
@@ -42,8 +47,8 @@ const GoogleMaps = () => {
         style={styles.map}
         region={
           {
-            latitude: latitude,
-            longitude: longitude,
+            latitude: (latitude != 0) ? latitude : 0,
+            longitude: (longitude != 0) ? longitude : 0,
             latitudeDelta: 0.035,
             longitudeDelta: 0.0121,
           }
