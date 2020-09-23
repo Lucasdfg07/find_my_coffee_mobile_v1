@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, Image } from 'react-native';
 
-import ListStars from '../../ListStars';
-
 import ListEstablishmentsService from '../../../services/Local/store.js';
+
+import StarRating from 'react-native-star-rating';
 
 const Separator = () => (
     <View style={styles.separator} />
@@ -34,7 +34,13 @@ const ListCoffees = (props) => {
                             </Text>
 
                             <View style={{flexDirection: 'row'}}>
-                                <ListStars count={store.ratings_count} average={store.ratings_average} />
+                                <StarRating
+                                    disabled={true}
+                                    maxStars={5}
+                                    rating={store.ratings_count}
+                                    fullStarColor="yellow"
+                                    starSize={15} 
+                                />
 
                                 <Text style={{color: 'white', marginLeft: 10, fontSize: 10}}>
                                     { store.ratings_count } Opiniões
