@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import { View, Text, StyleSheet, TouchableWithoutFeedback } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 
 import NearstCoffees from '../NearstCoffees';
 import EstablishmentsService from '../../services/Google/establishments.js';
