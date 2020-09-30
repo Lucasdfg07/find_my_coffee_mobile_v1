@@ -190,7 +190,7 @@ export default GoogleService;
 import GoogleService from './google';
 
 const EstablishmentsService = {
-  index: (latitude, longitude) => GoogleService.get(`https://maps.googleapis.com/maps/api/place/textsearch/json?query=coffee+shop&location=-${latitude},${longitude}&radius=5000&key=AIzaSyAriO9z5tX1tht7YomsgWyC9BNpWMT599w`),
+  index: (latitude, longitude) => GoogleService.get(`https://maps.googleapis.com/maps/api/place/textsearch/json?query=coffee+shop&location=-${latitude},${longitude}&radius=5000&key=SUA_GOOGLE_KEY_API`),
 }
 
 export default EstablishmentsService;
@@ -275,7 +275,7 @@ import EstablishmentsService from '../../services/Google/establishments.js';
 import GoogleService from './google';
 
 const EstablishmentService = {
-  index: (place_id) => GoogleService.get(`https://maps.googleapis.com/maps/api/place/details/json?place_id=${place_id}&key=AIzaSyAriO9z5tX1tht7YomsgWyC9BNpWMT599w`),
+  index: (place_id) => GoogleService.get(`https://maps.googleapis.com/maps/api/place/details/json?place_id=${place_id}&key=SUA_GOOGLE_KEY_API`),
 }
 
 export default EstablishmentService;
@@ -352,7 +352,7 @@ const Establishment = (props) => {
 
                     {
                         (establishment.photos) ? 
-                            <Image style={styles.photo} source={{uri: `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${establishment.photos[0].photo_reference}&sensor=false&key=AIzaSyAriO9z5tX1tht7YomsgWyC9BNpWMT599w`}} alt="Store perfil"/> 
+                            <Image style={styles.photo} source={{uri: `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${establishment.photos[0].photo_reference}&sensor=false&key=SUA_GOOGLE_KEY_API`}} alt="Store perfil"/> 
                         :  
                             <Image style={styles.photo} source={ProfilePhoto} alt="No perfil" />
                     }
@@ -470,7 +470,7 @@ var width = Dimensions.get('window').width; //full width
 
                                     {
                                         (establishment.photos) ? 
-                                            <Image style={styles.photo} source={{uri: `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${establishment.photos[0].photo_reference}&sensor=false&key=AIzaSyAriO9z5tX1tht7YomsgWyC9BNpWMT599w`}} alt="Store perfil"/> 
+                                            <Image style={styles.photo} source={{uri: `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${establishment.photos[0].photo_reference}&sensor=false&key=SUA_GOOGLE_KEY_API`}} alt="Store perfil"/> 
                                         :  
                                             <Image style={styles.photo} source={ProfilePhoto} alt="No perfil" />
                                     }
