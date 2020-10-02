@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
-import ListRatingsService from '../../../services/Local/rating';
+import ListRatingsService from '../../../services/rating';
 
 import StarRating from 'react-native-star-rating';
 
@@ -45,9 +45,9 @@ const ListRatings = (props) => {
 
             {
                 ratings.ratings_count > 0 &&
-                ratings.ratings.map(rating => {
+                ratings.ratings.map((rating, index) => {
                     return (
-                        <View>
+                        <View key={index}>
                             <Separator />
                             
                             <View style={{flexDirection: 'row', marginHorizontal: 20}}>

@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import { View, StyleSheet } from 'react-native';
 
 import NearstCoffees from '../NearstCoffees';
-import EstablishmentsService from '../../services/Google/establishments.js';
+import EstablishmentsService from '../../services/google_list_of_establishments';
 
 
 import MapView, { Marker } from 'react-native-maps';

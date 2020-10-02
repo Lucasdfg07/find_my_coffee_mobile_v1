@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { StyleSheet, View, Text, Image, ScrollView, Button, Dimensions } from 'react-native';
 
 import ListRatings from './ListRatings';
-import EstablishmentPhotoService from '../../services/Google/establishment.js';
+import EstablishmentPhotoService from '../../services/google_establishment';
 
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faMapMarker } from '@fortawesome/free-solid-svg-icons';

@@ -170,30 +170,30 @@ usando essa função no useEffect e adicionando o atributo "region" ao nosso Map
 npm install axios
 ```
 
-2 - Crie a pasta /src/services/Google.
+2 - Crie a pasta /src/services.
 
-3 - Dentro desse service 'Google', crie os arquivos 'establishments.js' e 'google.js'.
+3 - Dentro da pasta /src/services, crie os arquivos 'google_list_of_establishments.js' e 'api.js'.
 
-4 - Cole o seguinte código no arquivo 'google.js':
+4 - Cole o seguinte código no arquivo 'api.js':
 
 ```
 import axios from 'axios';
 
-const GoogleService = axios.create({baseURL: ""});
+const Api = axios.create({baseURL: 'SEU_CODIGO_HTTPS_NGROK/api/v1'});
 
-export default GoogleService;
+export default Api;
 ```
 
-5 - Agora cole o seguinte código no arquivo 'establishments.js'.
+5 - Agora cole o seguinte código no arquivo 'google_list_of_establishments.js'.
 
 ```
-import GoogleService from './google';
+import Api from './api';
 
-const EstablishmentsService = {
-  index: (latitude, longitude) => GoogleService.get(`https://maps.googleapis.com/maps/api/place/textsearch/json?query=coffee+shop&location=-${latitude},${longitude}&radius=5000&key=AIzaSyAriO9z5tX1tht7YomsgWyC9BNpWMT599w`),
+const GoogleListOfEstablishmentsService = {
+  index: (latitude, longitude) => Api.get(`/google_stores?latitude=${latitude}&longitude=${longitude}`),
 }
 
-export default EstablishmentsService;
+export default GoogleListOfEstablishmentsService;
 ```
 
 6 - Setados os nossos services, buscando da api do google, volte ao componente /src/components/GoogleMaps.
@@ -203,7 +203,7 @@ export default EstablishmentsService;
 ```
 ...
 
-import EstablishmentsService from '../../services/Google/establishments.js';
+import EstablishmentsService from '../../services/google_list_of_establishments.js';
 
     ...
 
@@ -269,16 +269,16 @@ import EstablishmentsService from '../../services/Google/establishments.js';
 
 ### Criando a página do estabelecimento clicado
 
-1 - Crie o arquivo /src/services/Google/establishment.js e cole o seguinte código nele:
+1 - Crie o arquivo /src/services/google_establishment.js e cole o seguinte código nele:
 
 ```
-import GoogleService from './google';
+import Api from './api';
 
-const EstablishmentService = {
-  index: (place_id) => GoogleService.get(`https://maps.googleapis.com/maps/api/place/details/json?place_id=${place_id}&key=AIzaSyAriO9z5tX1tht7YomsgWyC9BNpWMT599w`),
+const GoogleEstablishmentService = {
+  index: (place_id) => Api.get(`/google_stores/${place_id}`),
 }
 
-export default EstablishmentService;
+export default GoogleEstablishmentService;
 ```
 
 2 - Agora crie a pasta /src/components/Establishment.
@@ -318,7 +318,7 @@ import React, { useEffect, useState } from 'react';
 import { StyleSheet, View, Text, Image, ScrollView, Button, Dimensions } from 'react-native';
 ...
 
-import EstablishmentPhotoService from '../../services/Google/establishment.js';
+import EstablishmentPhotoService from '../../services/google_establishment.js';
 var height = Dimensions.get('window').height; //full height
 
 ...
@@ -701,7 +701,7 @@ export default ListRatings;
 import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
-import ListRatingsService from '../../../services/Local/rating';
+import ListRatingsService from '../../../services/rating';
 
 const ListRatings = (props) => {
     const [ratings, setRatings] = useState([]);
@@ -779,7 +779,7 @@ npm install react-native-star-rating --save
 ```
 ...
 
-import ListRatingsService from '../../../services/Local/rating';
+import ListRatingsService from '../../../services/rating';
 
 import StarRating from 'react-native-star-rating';
 
@@ -1162,7 +1162,7 @@ export default ListCoffees;
 ```
 ...
 
-import ListEstablishmentsService from '../../../services/Local/store.js';
+import ListEstablishmentsService from '../../../services/store.js';
 
 const ListCoffees = (props) => {
     const [stores, setStores] = useState([]);
@@ -1274,7 +1274,7 @@ export default ListCoffees;
 import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, Image } from 'react-native';
 
-import ListEstablishmentsService from '../../../services/Local/store.js';
+import ListEstablishmentsService from '../../../services/store.js';
 
 import StarRating from 'react-native-star-rating';
 
@@ -1386,7 +1386,7 @@ import React, {useState, useEffect} from 'react';
 import { View, StyleSheet } from 'react-native';
 
 import NearstCoffees from '../NearstCoffees';
-import EstablishmentsService from '../../services/Google/establishments.js';
+import EstablishmentsService from '../../services/google_list_of_establishments.js';
 
 
 import MapView, { Marker } from 'react-native-maps';

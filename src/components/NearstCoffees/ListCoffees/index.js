@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, Image } from 'react-native';
 
-import ListEstablishmentsService from '../../../services/Local/store.js';
+import ListEstablishmentsService from '../../../services/store.js';
 
 import StarRating from 'react-native-star-rating';
 
@@ -29,9 +29,9 @@ const ListCoffees = (props) => {
     return(
         <ScrollView style={styles.container}>
             {
-                stores.map(store => {
+                stores.map((store, index) => {
                     return (
-                        <View style={{flex: 1}} key={store.name}>
+                        <View style={{flex: 1}} key={index}>
                             <Text style={styles.store_name}>{store.name}</Text>
 
                             <Text style={styles.store_address}>
