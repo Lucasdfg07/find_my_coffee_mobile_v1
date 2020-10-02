@@ -352,7 +352,7 @@ const Establishment = (props) => {
 
                     {
                         (establishment.photos) ? 
-                            <Image style={styles.photo} source={{uri: `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${establishment.photos[0].photo_reference}&sensor=false&key=AIzaSyAriO9z5tX1tht7YomsgWyC9BNpWMT599w`}} alt="Store perfil"/> 
+                            <Image style={styles.photo} source={{uri: `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${establishment.photos[0].photo_reference}&sensor=false&key=SUA_GOOGLE_KEY_API`}} alt="Store perfil"/> 
                         :  
                             <Image style={styles.photo} source={ProfilePhoto} alt="No perfil" />
                     }
@@ -470,7 +470,7 @@ var width = Dimensions.get('window').width; //full width
 
                                     {
                                         (establishment.photos) ? 
-                                            <Image style={styles.photo} source={{uri: `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${establishment.photos[0].photo_reference}&sensor=false&key=AIzaSyAriO9z5tX1tht7YomsgWyC9BNpWMT599w`}} alt="Store perfil"/> 
+                                            <Image style={styles.photo} source={{uri: `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${establishment.photos[0].photo_reference}&sensor=false&key=SUA_GOOGLE_KEY_API`}} alt="Store perfil"/> 
                                         :  
                                             <Image style={styles.photo} source={ProfilePhoto} alt="No perfil" />
                                     }
